@@ -6,22 +6,23 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 import bell from '../assets/bell.png';
 import newspaper from '../assets/newspaper.png';
-import { Dashboard } from './screens/Dashboard';
 import { Profile } from './screens/Profile';
 import { Settings } from './screens/Settings';
-import { Updates } from './screens/Updates';
 import { NotFound } from './screens/NotFound';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native';
-import { typography } from '../utils/theme';
+import { typography, colors } from '../utils/theme';
+import { Home } from './screens/Home';
+import { Devices } from './screens/Devices';
+import { Maintenance } from './screens/Maintenance';
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
     Home: {
-      screen: Dashboard,
+      screen: Home,
       options: {
         headerTitle: () => (
           <Text style={typography.h3}>Dashboard</Text>
@@ -34,49 +35,121 @@ const HomeTabs = createBottomTabNavigator({
             <Ionicons name="menu" size={24} color="black" />
           </TouchableOpacity>
         ),
-        tabBarIcon: ({ color, size }) => (
-          <Image
-            source={newspaper}
-            tintColor={color}
-            style={{
-              width: size,
-              height: size,
-            }}
-          />
+        tabBarIcon: ({ color, focused }) => (
+          <Ionicons name="home" size={24} color={color} />
+        ),
+        tabBarLabel: ({ color, focused }) => (
+          <Text style={{
+            ...typography.caption,
+            fontFamily: 'Outfit',
+            color: color,
+            fontSize: 12,
+            marginTop: 0,
+          }}>
+            Home
+          </Text>
         ),
       },
     },
-    Updates: {
-      screen: Updates,
+    Payments: {
+      screen: Devices,
       options: {
         headerTitle: () => (
-          <Text style={typography.h3}>Updates</Text>
+          <Text style={typography.h3}>Payments</Text>
         ),
-        headerLeft: () => {
-          const navigation = useNavigation();
-          return (
-            <TouchableOpacity 
-              onPress={() => navigation.goBack()}
-              style={{
-                padding: 10,
-              }}>
-              <Ionicons name="chevron-back" size={24} color="black" />
-            </TouchableOpacity>
-          );
-        },
         headerTitleAlign: "center",
-        tabBarIcon: ({ color, size }) => (
-          <Image
-            source={bell}
-            tintColor={color}
-            style={{
-              width: size,
-              height: size,
-            }}
-          />
+        headerLeft: () => (
+          <TouchableOpacity style={{
+            padding: 10,
+          }}>
+            <Ionicons name="menu" size={24} color="black" />
+          </TouchableOpacity>
+        ),
+        tabBarIcon: ({ color, focused }) => (
+          <Ionicons name="card" size={24} color={color} />
+        ),
+        tabBarLabel: ({ color, focused }) => (
+          <Text style={{
+            ...typography.caption,
+            fontFamily: 'Outfit',
+            color: color,
+            fontSize: 12,
+            marginTop: 0,
+          }}>
+            Payments
+          </Text>
         ),
       },
     },
+    Devices: {
+      screen: Devices,
+      options: {
+        headerTitle: () => (
+          <Text style={typography.h3}>Devices</Text>
+        ),
+        headerTitleAlign: "center",
+        headerLeft: () => (
+          <TouchableOpacity style={{
+            padding: 10,
+          }}>
+            <Ionicons name="menu" size={24} color="black" />
+          </TouchableOpacity>
+        ),
+        tabBarIcon: ({ color, focused }) => (
+          <Ionicons name="phone-portrait" size={24} color={color} />
+        ),
+        tabBarLabel: ({ color, focused }) => (
+          <Text style={{
+            ...typography.caption,
+            fontFamily: 'Outfit',
+            color: color,
+            fontSize: 12,
+            marginTop: 0,
+          }}>
+            Devices
+          </Text>
+        ),
+      },
+    },
+    Profile: {
+      screen: Profile,
+      options: {
+        headerTitle: () => (
+          <Text style={typography.h3}>Profile</Text>
+        ),
+        headerTitleAlign: "center",
+        headerLeft: () => (
+          <TouchableOpacity style={{
+            padding: 10,
+          }}>
+            <Ionicons name="menu" size={24} color="black" />
+          </TouchableOpacity>
+        ),
+        tabBarIcon: ({ color, focused }) => (
+          <Ionicons name="person" size={24} color={color} />
+        ),
+        tabBarLabel: ({ color, focused }) => (
+          <Text style={{
+            ...typography.caption,
+            fontFamily: 'Outfit',
+            color: color,
+            fontSize: 12,
+            marginTop: 0,
+          }}>
+            Profile
+          </Text>
+        ),
+      },
+    },
+  },
+  screenOptions: {
+    tabBarStyle: {
+      height: 60,
+      paddingTop: 5,
+      paddingBottom: 5,
+    },
+    tabBarActiveTintColor: colors.primary,
+    tabBarInactiveTintColor: colors.textSecondary,
   },
 });
 
@@ -121,6 +194,23 @@ const RootStack = createNativeStackNavigator({
       linking: {
         path: '*',
       },
+    },
+    Maintenance: {
+      screen: Maintenance,
+      options: ({ navigation }) => ({
+        headerTitle: () => (
+          <Text style={typography.h3}>Maintenance</Text>
+        ),
+        headerTitleAlign: "center",
+        headerLeft: ({ canGoBack }) => canGoBack && (
+          <TouchableOpacity 
+            style={{ padding: 10 }}
+            onPress={() => navigation.goBack()}
+          >
+            <Ionicons name="arrow-back" size={24} color="black" />
+          </TouchableOpacity>
+        ),
+      }),
     },
   },
 });
