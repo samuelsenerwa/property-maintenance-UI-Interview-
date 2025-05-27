@@ -1,65 +1,131 @@
-# Starter Template with React Navigation
+# Property Maintenance App
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
+A modern React Native mobile application for property management and maintenance, designed to streamline communication between tenants and property managers.
 
-It includes the following:
+## Features
 
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic deep link and URL handling configuration
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
-- Edge-to-edge configured on Android with [`react-native-edge-to-edge`](https://www.npmjs.com/package/react-native-edge-to-edge)
+### Dashboard
+- **Rent Payment Tracking**: View upcoming rent payments with amount and due date
+- **Bill Management**: Monitor utility bills (electricity, water, internet) with payment status
+- **Maintenance Requests**: Track the status of maintenance issues in your property
+- **Quick Actions**: Easily submit new maintenance requests
+
+### Maintenance Management
+- **Request Submission**: Submit detailed maintenance requests with descriptions and photos
+- **Location Selection**: Specify the exact location of the issue within the property
+- **Request Tracking**: Monitor the status of all maintenance requests (Submitted, In Progress, Completed)
+- **Photo Documentation**: Attach photos to provide visual context for maintenance issues
+
+## UI Screens
+
+### Dashboard Screen
+The dashboard provides a comprehensive overview of the tenant's property information:
+- **Upcoming Rent Section**: Shows the next rent payment of $1,200.00 due in 7 days with a "Pay Now" button
+- **Utility Bills Section**: Displays electricity ($150), water ($50), and internet ($75) bills with their respective due dates and payment options
+- **Maintenance Requests**: Shows active maintenance requests with status indicators (e.g., "Leaky Faucet (Kitchen)" marked as "In Progress")
+- **Quick Actions**: "Raise New Request" button for immediate reporting of new issues
+
+### Maintenance Screen
+The maintenance screen allows tenants to:
+- **New Request Form**: Input fields for issue description, location selection, and additional details
+- **Photo Upload**: Option to attach photos of the maintenance issue
+- **Request History**: List of previous maintenance requests (#12345, #67890, #ABCDE) with their current status
+- **Status Indicators**: Color-coded badges showing "In Progress" (yellow), "Completed" (green), and "Submitted" (blue)
+
+## Technology Stack
+
+- **React Native**: Cross-platform mobile application framework
+- **Expo**: Development toolchain for React Native
+- **React Navigation v7**: Navigation library for screen transitions
+- **Expo Google Fonts**: Custom typography with Outfit font
+- **Vector Icons**: Ionicons and Material Icons for UI elements
+
+## Implementation Details
+
+### UI/UX Design
+- **Modern Interface**: Clean, intuitive design with a focus on usability
+- **Typography System**: Consistent text styling with the Outfit font family
+- **Color Scheme**: Thoughtful color palette for status indicators and interactive elements
+- **Responsive Layout**: Adapts to different screen sizes and orientations
+
+### Architecture
+- **Component-Based Structure**: Modular components for maintainability
+- **Separated Styling**: Clean separation of UI logic and styling
+- **Navigation Flow**: Intuitive screen transitions with React Navigation
+- **State Management**: React hooks for local state management
+
+### Code Organization
+- **Screens**: Main UI views (Home, Maintenance, etc.)
+- **Navigation**: Screen routing and tab configuration
+- **Styles**: Separated style files for cleaner components
+- **Utils**: Shared utilities for fonts, themes, and constants
+- **Assets**: Images and icons used throughout the app
 
 ## Getting Started
 
-1. Create a new project using this template:
+### Prerequisites
+- Node.js (v14 or newer)
+- npm or yarn
+- Expo CLI
 
-   ```sh
-   npx create-expo-app@latest --template react-navigation/template
-   ```
+### Installation
 
-2. Edit the `app.json` file to configure the `name`, `slug`, `scheme` and bundle identifiers (`ios.bundleIdentifier` and `android.bundleIdentifier`) for your app.
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/property-maintenance.git
+cd property-maintenance
+```
 
-3. Edit the `src/App.tsx` file to start working on your app.
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-## Running the app
+3. Start the development server:
+```bash
+npx expo start
+```
 
-- Install the dependencies:
+4. Run on a device or emulator:
+   - Scan the QR code with the Expo Go app (Android) or Camera app (iOS)
+   - Press 'a' for Android emulator
+   - Press 'i' for iOS simulator
 
-  ```sh
-  npm install
-  ```
+## Future Enhancements
 
-- Start the development server:
+- **Payment Integration**: Direct rent and bill payments through the app
+- **Push Notifications**: Real-time updates on maintenance request status
+- **Chat Feature**: Direct communication with property managers
+- **Document Storage**: Store important property documents and lease agreements
+- **Smart Home Integration**: Control smart home devices within the property
 
-  ```sh
-  npm start
-  ```
+## Design Decisions
 
-- Build and run iOS and Android development builds:
+### Font Selection
+The app uses the Outfit font family for a modern, clean appearance:
+- **Bold** for headings and important information
+- **Medium** for subheadings and buttons
+- **Regular** for body text
+- **Light** for secondary information
 
-  ```sh
-  npm run ios
-  # or
-  npm run android
-  ```
+### Color System
+- **Primary Blue**: Used for buttons and interactive elements
+- **Status Colors**: Yellow for "In Progress", Green for "Completed", Blue for "Submitted"
+- **Neutral Tones**: Clean whites and grays for backgrounds and cards
 
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
+### Navigation Experience
+- **Bottom Tab Navigation**: Easy access to main sections (Home, Payments, Devices, Profile)
+- **Stack Navigation**: Intuitive flow between related screens
+- **Back Navigation**: Clear return paths from detail screens
 
-## Notes
+## License
 
-This project uses a [development build](https://docs.expo.dev/develop/development-builds/introduction/) and cannot be run with [Expo Go](https://expo.dev/go). To run the app with Expo Go, edit the `package.json` file, remove the `expo-dev-client` package and `--dev-client` flag from the `start` script.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-We highly recommend using the development builds for normal development and testing.
+## Acknowledgements
 
-The `ios` and `android` folder are gitignored in the project by default as they are automatically generated during the build process ([Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)). This means that you should not edit these folders directly and use [config plugins](https://docs.expo.dev/config-plugins/) instead. However, if you need to edit these folders, you can remove them from the `.gitignore` file so that they are tracked by git.
-
-## Resources
-
-- [React Navigation documentation](https://reactnavigation.org/)
-- [Expo documentation](https://docs.expo.dev/)
-
----
-
-Demo assets are from [lucide.dev](https://lucide.dev/)
+- Design inspiration from modern property management applications
+- Icons provided by Ionicons and Material Icons
+- Outfit font by Rodrigo Fuenzalida
