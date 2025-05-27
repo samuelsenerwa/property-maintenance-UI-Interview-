@@ -3,23 +3,37 @@ import { HeaderButton, Text } from '@react-navigation/elements';
 import {
   createStaticNavigation,
   StaticParamList,
+  useNavigation,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image } from 'react-native';
 import bell from '../assets/bell.png';
 import newspaper from '../assets/newspaper.png';
-import { Home } from './screens/Home';
+import { Dashboard } from './screens/Dashboard';
 import { Profile } from './screens/Profile';
 import { Settings } from './screens/Settings';
 import { Updates } from './screens/Updates';
 import { NotFound } from './screens/NotFound';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { TouchableOpacity } from 'react-native';
+import { typography } from '../utils/theme';
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
     Home: {
-      screen: Home,
+      screen: Dashboard,
       options: {
-        title: 'Feed',
+        headerTitle: () => (
+          <Text style={typography.h3}>Dashboard</Text>
+        ),
+        headerTitleAlign: "center",
+        headerLeft: () => (
+          <TouchableOpacity style={{
+            padding: 10,
+          }}>
+            <Ionicons name="menu" size={24} color="black" />
+          </TouchableOpacity>
+        ),
         tabBarIcon: ({ color, size }) => (
           <Image
             source={newspaper}
@@ -35,6 +49,22 @@ const HomeTabs = createBottomTabNavigator({
     Updates: {
       screen: Updates,
       options: {
+        headerTitle: () => (
+          <Text style={typography.h3}>Updates</Text>
+        ),
+        headerLeft: () => {
+          const navigation = useNavigation();
+          return (
+            <TouchableOpacity 
+              onPress={() => navigation.goBack()}
+              style={{
+                padding: 10,
+              }}>
+              <Ionicons name="chevron-back" size={24} color="black" />
+            </TouchableOpacity>
+          );
+        },
+        headerTitleAlign: "center",
         tabBarIcon: ({ color, size }) => (
           <Image
             source={bell}
@@ -55,7 +85,6 @@ const RootStack = createNativeStackNavigator({
     HomeTabs: {
       screen: HomeTabs,
       options: {
-        title: 'Home',
         headerShown: false,
       },
     },
@@ -76,7 +105,7 @@ const RootStack = createNativeStackNavigator({
       options: ({ navigation }) => ({
         presentation: 'modal',
         headerRight: () => (
-          <HeaderButton onPress={navigation.goBack}>
+          <HeaderButton onPress={() => navigation.goBack()}>
             <Text>Close</Text>
           </HeaderButton>
         ),
@@ -85,7 +114,9 @@ const RootStack = createNativeStackNavigator({
     NotFound: {
       screen: NotFound,
       options: {
-        title: '404',
+          headerTitle: () => (
+          <Text style={typography.h1}>404</Text>
+        ),
       },
       linking: {
         path: '*',

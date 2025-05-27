@@ -3,6 +3,8 @@ import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
 import { Navigation } from './navigation';
+import { useFonts } from 'expo-font';
+import { fontConfig } from './utils/fonts';
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -13,6 +15,19 @@ Asset.loadAsync([
 SplashScreen.preventAutoHideAsync();
 
 export function App() {
+  const [fontsLoaded] = useFonts(fontConfig);
+
+  React.useEffect(() => {
+    if (fontsLoaded) {
+      // Only hide splash screen once fonts are loaded
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) {
+    return null; // Don't render anything until fonts are loaded
+  }
+
   return (
     <Navigation
       linking={{
@@ -23,7 +38,7 @@ export function App() {
         ],
       }}
       onReady={() => {
-        SplashScreen.hideAsync();
+        // SplashScreen is now hidden in the useEffect above
       }}
     />
   );
