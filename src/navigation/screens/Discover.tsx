@@ -1,10 +1,10 @@
 import { Text } from '@react-navigation/elements';
 import { StyleSheet, View } from 'react-native';
 
-export function Devices() {
+export function Discover() {
   return (
     <View style={styles.container}>
-      <Text>Devices Screen</Text>
+      <Text>Discover Screen</Text>
     </View>
   );
 }

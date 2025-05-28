@@ -16,7 +16,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native';
 import { typography, colors } from '../utils/theme';
 import { Home } from './screens/Home';
-import { Devices } from './screens/Devices';
+import { Discover } from './screens/Discover';
 import { Maintenance } from './screens/Maintenance';
 
 const HomeTabs = createBottomTabNavigator({
@@ -52,7 +52,7 @@ const HomeTabs = createBottomTabNavigator({
       },
     },
     Payments: {
-      screen: Devices,
+      screen: Discover,
       options: {
         headerTitle: () => (
           <Text style={typography.h3}>Payments</Text>
@@ -81,22 +81,22 @@ const HomeTabs = createBottomTabNavigator({
         ),
       },
     },
-    Devices: {
-      screen: Devices,
+    Discover: {
+      screen: Discover,
       options: {
         headerTitle: () => (
-          <Text style={typography.h3}>Devices</Text>
+          <Text style={typography.h3}>Find a home</Text>
         ),
         headerTitleAlign: "center",
         headerLeft: () => (
           <TouchableOpacity style={{
             padding: 10,
           }}>
-            <Ionicons name="menu" size={24} color="black" />
+            <Ionicons name="arrow-back" size={24} color="black" />
           </TouchableOpacity>
         ),
         tabBarIcon: ({ color, focused }) => (
-          <Ionicons name="phone-portrait" size={24} color={color} />
+          <Ionicons name="search-sharp" size={24} color={color} />
         ),
         tabBarLabel: ({ color, focused }) => (
           <Text style={{
@@ -106,7 +106,7 @@ const HomeTabs = createBottomTabNavigator({
             fontSize: 12,
             marginTop: 0,
           }}>
-            Devices
+            Discover
           </Text>
         ),
       },
