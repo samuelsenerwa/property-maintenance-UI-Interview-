@@ -7,7 +7,7 @@ import {
   TouchableOpacity, 
   Image 
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native';
 import { styles } from './styles/MaintenanceStyles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
@@ -126,6 +126,9 @@ export function Maintenance() {
             Submit Request
           </Text>
         </TouchableOpacity>
+
+        {/* a view to divide the screen */}
+        <View style={styles.divider} />
       </ScrollView>
     </SafeAreaView>
   );

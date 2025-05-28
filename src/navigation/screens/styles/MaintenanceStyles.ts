@@ -136,7 +136,7 @@ export const styles = StyleSheet.create({
     padding: spacing.md,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: spacing.md,
+    margin: spacing.md,
     display: 'flex',
     flexDirection: 'row',
     gap: spacing.sm,
@@ -145,5 +145,10 @@ export const styles = StyleSheet.create({
     ...typography.button,
     fontFamily: fonts.medium,
     color: 'white',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: colors.border,
+    marginVertical: spacing.md,
   },
 });

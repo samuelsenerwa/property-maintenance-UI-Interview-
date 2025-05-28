@@ -1,6 +1,6 @@
 import { Text } from '@react-navigation/elements';
 import { View, TouchableOpacity, ScrollView, Image } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles/HomeStyles';
 import Water from '../../assets/water.png';
