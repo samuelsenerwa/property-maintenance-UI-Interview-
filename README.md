@@ -25,12 +25,16 @@ The dashboard provides a comprehensive overview of the tenant's property informa
 - **Maintenance Requests**: Shows active maintenance requests with status indicators (e.g., "Leaky Faucet (Kitchen)" marked as "In Progress")
 - **Quick Actions**: "Raise New Request" button for immediate reporting of new issues
 
+  ![Image](https://github.com/user-attachments/assets/1254307b-8bef-4840-a65e-0064436e41db)
+
 ### Maintenance Screen
 The maintenance screen allows tenants to:
 - **New Request Form**: Input fields for issue description, location selection, and additional details
 - **Photo Upload**: Option to attach photos of the maintenance issue
 - **Request History**: List of previous maintenance requests (#12345, #67890, #ABCDE) with their current status
 - **Status Indicators**: Color-coded badges showing "In Progress" (yellow), "Completed" (green), and "Submitted" (blue)
+
+  ![Image](https://github.com/user-attachments/assets/56253529-d589-4393-946f-6cca54f903a7)
 
 ## Technology Stack
 
