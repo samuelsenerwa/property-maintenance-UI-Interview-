@@ -58,6 +58,11 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.regular,
     color: colors.textSecondary,
   },
+  locationPickerTextSelected: {
+    ...typography.body1,
+    fontFamily: fonts.medium,
+    color: colors.text,
+  },
   uploadButton: {
     borderWidth: 1,
     borderStyle: 'dashed',
@@ -74,8 +79,37 @@ export const styles = StyleSheet.create({
   uploadButtonText: {
     ...typography.button,
     fontFamily: fonts.medium,
-    color: colors.textSecondary,
+    color: colors.primary,
     textAlign: 'center',
+  },
+  photoContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: spacing.md,
+  },
+  photoPreview: {
+    width: 80,
+    height: 80,
+    marginRight: spacing.sm,
+    marginBottom: spacing.sm,
+    borderRadius: borderRadius.sm,
+    position: 'relative',
+  },
+  photoImage: {
+    width: '100%',
+    height: '100%',
+    borderRadius: borderRadius.sm,
+  },
+  removePhotoButton: {
+    position: 'absolute',
+    top: -8,
+    right: -8,
+    backgroundColor: 'white',
+    borderRadius: 10,
+    width: 20,
+    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   requestItem: {
     flexDirection: 'row',
@@ -141,6 +175,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: spacing.sm,
   },
+  submitButtonDisabled: {
+    backgroundColor: '#BDBDBD',
+  },
   submitButtonText: {
     ...typography.button,
     fontFamily: fonts.medium,
@@ -150,5 +187,46 @@ export const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.border,
     marginVertical: spacing.md,
+  },
+  
+  // Modal styles
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'flex-end',
+  },
+  modalContent: {
+    backgroundColor: colors.card,
+    borderTopLeftRadius: borderRadius.md,
+    borderTopRightRadius: borderRadius.md,
+    padding: spacing.md,
+    maxHeight: '70%',
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: spacing.md,
+    paddingBottom: spacing.sm,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  modalTitle: {
+    ...typography.h4,
+    fontFamily: fonts.semiBold,
+    color: colors.text,
+  },
+  locationItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: spacing.md,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.border,
+  },
+  locationItemText: {
+    ...typography.body1,
+    fontFamily: fonts.regular,
+    color: colors.text,
   },
 });
