@@ -58,6 +58,8 @@ The discover screen helps users find new properties:
 - **City Exploration**: Grid layout of major cities for location-based property browsing
 - **Responsive Design**: Clean, intuitive interface that adapts to different screen sizes
 
+  ![Image](https://github.com/user-attachments/assets/9a0864ae-de2c-4167-9ba9-aaacc1c01947)
+
 ## Technology Stack
 
 - **React Native**: Cross-platform mobile application framework
