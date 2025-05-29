@@ -4,25 +4,34 @@ import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles/DiscoverStyles';
 import { useDebounce } from '../../hooks/debounce';
 
+// Import images
+import property1 from '../../assets/property1.jpg';
+import residence from '../../assets/residence.jpg';
+import property2 from '../../assets/property2.jpg';
+import cityImage from '../../assets/city.jpg';
+import city1Image from '../../assets/city1.jpg';
+import city2Image from '../../assets/city2.jpg';
+import residence2 from '../../assets/residence2.jpg';
+
 // Sample data for recommended properties
 const recommendedProperties = [
   {
     id: '1',
     name: 'The Grandview',
     address: '123 Elm Street, Anytown',
-    image: require('../../assets/property1.jpg'),
+    image: property1,
   },
   {
     id: '2',
     name: 'The Residences',
     address: '456 Oak Avenue, Anytown',
-    image: require('../../assets/residence.jpg'),
+    image: residence,
   },
   {
     id: '3',
     name: 'Urban Heights',
     address: '789 Pine Road, Anytown',
-    image: require('../../assets/property2.jpg'),
+    image: property2,
   },
 ];
 
@@ -31,22 +40,22 @@ const cities = [
   {
     id: '1',
     name: 'San Francisco',
-    image: require('../../assets/city.jpg'),
+    image: cityImage,
   },
   {
     id: '2',
     name: 'New York',
-    image: require('../../assets/city1.jpg'),
+    image: city1Image,
   },
   {
     id: '3',
     name: 'Los Angeles',
-    image: require('../../assets/city2.jpg'),
+    image: city2Image,
   },
   {
     id: '4',
     name: 'Chicago',
-    image: require('../../assets/residence2.jpg'),
+    image: residence2,
   },
 ];
 

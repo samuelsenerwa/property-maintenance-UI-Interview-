@@ -1,3 +1,4 @@
+import React from 'react';
 import { Text } from '@react-navigation/elements';
 import { View, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { SafeAreaView } from 'react-native';

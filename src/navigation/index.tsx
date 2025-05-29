@@ -1,14 +1,11 @@
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HeaderButton, Text } from '@react-navigation/elements';
 import {
   createStaticNavigation,
   StaticParamList,
-  useNavigation,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Image, View } from 'react-native';
-import bell from '../assets/bell.png';
-import newspaper from '../assets/newspaper.png';
 import { Profile } from './screens/Profile';
 import { Settings } from './screens/Settings';
 import { NotFound } from './screens/NotFound';
@@ -35,10 +32,10 @@ const HomeTabs = createBottomTabNavigator({
             <Ionicons name="menu" size={24} color="black" />
           </TouchableOpacity>
         ),
-        tabBarIcon: ({ color, focused }) => (
+        tabBarIcon: ({ color }) => (
           <Ionicons name="home" size={24} color={color} />
         ),
-        tabBarLabel: ({ color, focused }) => (
+        tabBarLabel: ({ color }) => (
           <Text style={{
             ...typography.caption,
             fontFamily: 'Outfit',
@@ -65,10 +62,10 @@ const HomeTabs = createBottomTabNavigator({
             <Ionicons name="menu" size={24} color="black" />
           </TouchableOpacity>
         ),
-        tabBarIcon: ({ color, focused }) => (
+        tabBarIcon: ({ color }) => (
           <Ionicons name="card" size={24} color={color} />
         ),
-        tabBarLabel: ({ color, focused }) => (
+        tabBarLabel: ({ color }) => (
           <Text style={{
             ...typography.caption,
             fontFamily: 'Outfit',
@@ -95,10 +92,10 @@ const HomeTabs = createBottomTabNavigator({
             <Ionicons name="menu" size={24} color="black" />
           </TouchableOpacity>
         ),
-        tabBarIcon: ({ color, focused }) => (
+        tabBarIcon: ({ color }) => (
           <Ionicons name="search-sharp" size={24} color={color} />
         ),
-        tabBarLabel: ({ color, focused }) => (
+        tabBarLabel: ({ color }) => (
           <Text style={{
             ...typography.caption,
             fontFamily: 'Outfit',
@@ -125,10 +122,10 @@ const HomeTabs = createBottomTabNavigator({
             <Ionicons name="menu" size={24} color="black" />
           </TouchableOpacity>
         ),
-        tabBarIcon: ({ color, focused }) => (
+        tabBarIcon: ({ color }) => (
           <Ionicons name="person" size={24} color={color} />
         ),
-        tabBarLabel: ({ color, focused }) => (
+        tabBarLabel: ({ color }) => (
           <Text style={{
             ...typography.caption,
             fontFamily: 'Outfit',
