@@ -97,4 +97,11 @@ export const styles = StyleSheet.create({
     color: colors.text,
     padding: spacing.sm,
   },
+  noResultsText: {
+    ...typography.body1,
+    color: colors.textSecondary,
+    textAlign: 'center',
+    padding: spacing.md,
+    width: '100%',
+  },
 });

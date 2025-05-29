@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { View, TextInput, ScrollView, TouchableOpacity, Text, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { styles } from './styles/DiscoverStyles';
+import { useDebounce } from '../../hooks/debounce';
 
 // Sample data for recommended properties
 const recommendedProperties = [
@@ -49,7 +50,37 @@ const cities = [
   },
 ];
 
+
 export function Discover() {
+
+const [searchQuery, setSearchQuery] = useState('');
+const [filterProperties, setFilterProperties] = useState(recommendedProperties);
+const [filteredCities, setFilteredCities] = useState(cities);
+
+// debounce searching
+const debounce = useDebounce();
+
+// creating debounce search function
+const handleSearch = useCallback(debounce((text: string) => {
+  // filtering properties based on search text
+  const propertyResults = recommendedProperties.filter((property) => {
+    property.name.toLowerCase().includes(text.toLowerCase()) || property.address.toLowerCase().includes(text.toLowerCase())
+  })
+
+  // filtering cities based on search text
+  const cityResults = cities.filter((city) => {
+    city.name.toLowerCase().includes(text.toLowerCase())
+  })
+
+  // updating state
+  setFilterProperties(propertyResults)
+  setFilteredCities(cityResults)
+
+  console.log('Searching for: =======>', text)
+
+}, 500), []);
+
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       {/* Search Bar */}
@@ -59,6 +90,8 @@ export function Discover() {
           style={styles.searchInput}
           placeholder="Search by city, address, or ZIP code"
           placeholderTextColor="#666666"
+          value={searchQuery}
+          onChangeText={handleSearch}
         />
       </View>
 
