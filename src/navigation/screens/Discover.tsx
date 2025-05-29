@@ -50,36 +50,52 @@ const cities = [
   },
 ];
 
-
 export function Discover() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredProperties, setFilteredProperties] = useState(recommendedProperties);
+  const [filteredCities, setFilteredCities] = useState(cities);
 
-const [searchQuery, setSearchQuery] = useState('');
-const [filterProperties, setFilterProperties] = useState(recommendedProperties);
-const [filteredCities, setFilteredCities] = useState(cities);
+  // debounce searching
+  const debounce = useDebounce();
 
-// debounce searching
-const debounce = useDebounce();
+  // creating debounce search function
+  const handleSearch = useCallback(
+    debounce((text: string) => {
+      // Update search query state
+      setSearchQuery(text);
+      
+      if (!text.trim()) {
+        // If search is empty, show all items
+        setFilteredProperties(recommendedProperties);
+        setFilteredCities(cities);
+        return;
+      }
 
-// creating debounce search function
-const handleSearch = useCallback(debounce((text: string) => {
-  // filtering properties based on search text
-  const propertyResults = recommendedProperties.filter((property) => {
-    property.name.toLowerCase().includes(text.toLowerCase()) || property.address.toLowerCase().includes(text.toLowerCase())
-  })
+      // filtering properties based on search text
+      const propertyResults = recommendedProperties.filter(
+        property => 
+          property.name.toLowerCase().includes(text.toLowerCase()) || 
+          property.address.toLowerCase().includes(text.toLowerCase())
+      );
 
-  // filtering cities based on search text
-  const cityResults = cities.filter((city) => {
-    city.name.toLowerCase().includes(text.toLowerCase())
-  })
+      // filtering cities based on search text
+      const cityResults = cities.filter(
+        city => city.name.toLowerCase().includes(text.toLowerCase())
+      );
 
-  // updating state
-  setFilterProperties(propertyResults)
-  setFilteredCities(cityResults)
+      // updating state
+      setFilteredProperties(propertyResults);
+      setFilteredCities(cityResults);
 
-  console.log('Searching for: =======>', text)
+      console.log('Searching for: =======>', text);
+    }, 500),
+    []
+  );
 
-}, 500), []);
-
+  const onChangeText = (text: string) => {
+    setSearchQuery(text);
+    handleSearch(text);
+  };
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -91,7 +107,7 @@ const handleSearch = useCallback(debounce((text: string) => {
           placeholder="Search by city, address, or ZIP code"
           placeholderTextColor="#666666"
           value={searchQuery}
-          onChangeText={handleSearch}
+          onChangeText={onChangeText}
         />
       </View>
 
@@ -99,15 +115,19 @@ const handleSearch = useCallback(debounce((text: string) => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Recommended for you</Text>
         <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
-          {recommendedProperties.map((property) => (
-            <TouchableOpacity key={property.id} style={styles.propertyCard}>
-              <Image source={property.image} style={styles.propertyImage} />
-              <View style={styles.propertyInfo}>
-                <Text style={styles.propertyName}>{property.name}</Text>
-                <Text style={styles.propertyAddress}>{property.address}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+          {filteredProperties.length > 0 ? (
+            filteredProperties.map((property) => (
+              <TouchableOpacity key={property.id} style={styles.propertyCard}>
+                <Image source={property.image} style={styles.propertyImage} />
+                <View style={styles.propertyInfo}>
+                  <Text style={styles.propertyName}>{property.name}</Text>
+                  <Text style={styles.propertyAddress}>{property.address}</Text>
+                </View>
+              </TouchableOpacity>
+            ))
+          ) : (
+            <Text style={styles.noResultsText}>No properties found</Text>
+          )}
         </ScrollView>
       </View>
 
@@ -115,12 +135,16 @@ const handleSearch = useCallback(debounce((text: string) => {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Explore by city</Text>
         <View style={styles.cityGrid}>
-          {cities.map((city) => (
-            <TouchableOpacity key={city.id} style={styles.cityCard}>
-              <Image source={city.image} style={styles.cityImage} />
-              <Text style={styles.cityName}>{city.name}</Text>
-            </TouchableOpacity>
-          ))}
+          {filteredCities.length > 0 ? (
+            filteredCities.map((city) => (
+              <TouchableOpacity key={city.id} style={styles.cityCard}>
+                <Image source={city.image} style={styles.cityImage} />
+                <Text style={styles.cityName}>{city.name}</Text>
+              </TouchableOpacity>
+            ))
+          ) : (
+            <Text style={styles.noResultsText}>No cities found</Text>
+          )}
         </View>
       </View>
     </ScrollView>
