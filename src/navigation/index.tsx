@@ -92,7 +92,7 @@ const HomeTabs = createBottomTabNavigator({
           <TouchableOpacity style={{
             padding: 10,
           }}>
-            <Ionicons name="arrow-back" size={24} color="black" />
+            <Ionicons name="menu" size={24} color="black" />
           </TouchableOpacity>
         ),
         tabBarIcon: ({ color, focused }) => (
