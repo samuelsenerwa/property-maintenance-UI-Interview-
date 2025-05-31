@@ -4,7 +4,7 @@ import {
   Outfit_500Medium,
   Outfit_600SemiBold,
   Outfit_700Bold,
-} from '';
+} from '@expo-google-fonts/outfit';
 
 // Font family names to use in styles
 export const fonts = {

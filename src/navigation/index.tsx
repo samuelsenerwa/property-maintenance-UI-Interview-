@@ -15,6 +15,7 @@ import { typography, colors } from '../utils/theme';
 import { Home } from './screens/Home';
 import { Discover } from './screens/Discover';
 import { Maintenance } from './screens/Maintenance';
+import { Payment } from './screens/Payment';
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
@@ -48,11 +49,11 @@ const HomeTabs = createBottomTabNavigator({
         ),
       },
     },
-    Payments: {
-      screen: Discover,
+    Payment: {
+      screen: Payment,
       options: {
         headerTitle: () => (
-          <Text style={typography.h3}>Payments</Text>
+          <Text style={typography.h3}>Payment</Text>
         ),
         headerTitleAlign: "center",
         headerLeft: () => (
@@ -73,7 +74,7 @@ const HomeTabs = createBottomTabNavigator({
             fontSize: 12,
             marginTop: 0,
           }}>
-            Payments
+            Payment
           </Text>
         ),
       },
