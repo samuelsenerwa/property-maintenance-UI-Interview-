@@ -200,7 +200,7 @@ const RootStack = createNativeStackNavigator({
         ),
         headerTitleAlign: "center",
         headerLeft: ({ canGoBack }) => canGoBack && (
-          <TouchableOpacity 
+          <TouchableOpacity
             style={{ padding: 10 }}
             onPress={() => navigation.goBack()}
           >

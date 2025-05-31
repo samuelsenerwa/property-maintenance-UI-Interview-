@@ -1,0 +1,25 @@
+{
+  "$schema": "https://raw.githubusercontent.com/expo/eas-cli/refs/heads/main/packages/eas-json/schema/eas.schema.json",
+  "cli": {
+    "version": ">= 16.4.0",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "base" : {
+      "corepack": true
+    },
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

@@ -15,7 +15,7 @@ import {
 import { SafeAreaView } from 'react-native';
 import { styles } from './styles/MaintenanceStyles';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+// import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 
 // Define the photo type
@@ -342,7 +342,7 @@ export function Maintenance() {
             </Text>
           ) : (
             <>
-              <MaterialIcons name="send" size={24} color="white" />
+              <Ionicons name="send-outline" size={24} color="white" />
               <Text style={styles.submitButtonText}>
                 Submit Request
               </Text>

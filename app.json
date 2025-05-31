@@ -10,14 +10,17 @@
     "scheme": "propertymaintenance",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.satya164.reactnavigationtemplate"
+      "bundleIdentifier": "com.ynh.propertymaintenance"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.satya164.reactnavigationtemplate"
+      "package": "com.ynh.propertymaintenance",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,13 +34,31 @@
           "image": "./assets/splash-icon.png"
         }
       ],
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "enablePngCrunchInReleaseBuilds": true,
+            "enableProguardInReleaseBuilds": true,
+            "enableShrinkResourcesInReleaseBuilds": true,
+            "useAndroidX": true
+          }
+        }
+      ],
       "react-native-edge-to-edge",
       [
         "expo-image-picker",
         {
           "photosPermission": "The app accesses your photos to let you share the plumber"
         }
-      ]
-    ]
+      ],
+      "expo-build-properties"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "90d0e98d-3cde-4130-a569-a830d991c5da"
+      }
+    }
   }
 }

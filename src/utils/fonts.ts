@@ -1,10 +1,10 @@
-import { 
+import {
   Outfit_300Light,
   Outfit_400Regular,
   Outfit_500Medium,
   Outfit_600SemiBold,
   Outfit_700Bold,
-} from '@expo-google-fonts/outfit';
+} from '';
 
 // Font family names to use in styles
 export const fonts = {
