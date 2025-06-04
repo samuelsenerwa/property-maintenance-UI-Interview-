@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -17,6 +17,9 @@ import { styles } from './styles/MaintenanceStyles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
+import {Picker} from '@react-native-picker/picker';
+import { borderRadius, colors, spacing, typography } from '../../utils/theme';
+import { fonts } from '../../utils/fonts';
 
 // Define the photo type
 interface Photo {
@@ -42,7 +45,7 @@ export function Maintenance() {
   const [issueDescription, setIssueDescription] = useState('');
   const [location, setLocation] = useState('');
   const [additionalDetails, setAdditionalDetails] = useState('');
-  const [showLocationModal, setShowLocationModal] = useState(false);
+  const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedPhotos, setSelectedPhotos] = useState<Photo[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -79,11 +82,6 @@ export function Maintenance() {
       date: '2025-05-27'
     }
   ];
-
-  const handleLocationSelect = (selectedLocation: Location) => {
-    setLocation(selectedLocation.name);
-    setShowLocationModal(false);
-  };
 
   const handleAddPhoto = async () => {
     if (selectedPhotos.length >= 3) {
@@ -251,6 +249,16 @@ export function Maintenance() {
     );
   };
 
+  const pickerRef = useRef<Picker<string>>(null);
+  //open picker onPress
+  const openPicker = () => {
+   pickerRef.current?.focus();
+  };
+
+  const closePicker = () => {
+    pickerRef.current?.blur();
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
@@ -266,16 +274,21 @@ export function Maintenance() {
           />
 
           <Text style={styles.inputLabel}>Location</Text>
-          <TouchableOpacity
-            style={styles.locationPicker}
-            onPress={() => setShowLocationModal(true)}
-          >
-            <Text style={location ? styles.locationPickerTextSelected : styles.locationPickerText}>
-              {location || 'Select location'}
-            </Text>
-            <Ionicons name="chevron-down" size={20} color="#666666" />
-          </TouchableOpacity>
-
+          <TouchableOpacity style={styles.locationPicker} onPress={openPicker}>
+            <Text style={styles.locationPickerText}>{selectedLocation || 'Select Location'}</Text>
+              <Picker
+              ref={pickerRef}
+              selectedValue={selectedLocation}
+              onValueChange={(itemValue) => {
+                setSelectedLocation(itemValue);
+                closePicker();
+              }}
+              >
+                {locations.map((location) => (
+                  <Picker.Item color={colors.text} key={location.id} label={location.name} value={location.name} />
+                ))}
+              </Picker>
+         </TouchableOpacity>
           <Text style={styles.inputLabel}>Additional details (optional)</Text>
           <TextInput
             style={[styles.input, styles.textArea]}
@@ -354,38 +367,6 @@ export function Maintenance() {
         <View style={styles.divider} />
       </ScrollView>
 
-      {/* Location Selection Modal */}
-      <Modal
-        visible={showLocationModal}
-        transparent={true}
-        animationType="slide"
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
-            <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>Select Location</Text>
-              <TouchableOpacity onPress={() => setShowLocationModal(false)}>
-                <Ionicons name="close" size={24} color="#333333" />
-              </TouchableOpacity>
-            </View>
-            <FlatList
-              data={locations}
-              keyExtractor={(item) => item.id}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  style={styles.locationItem}
-                  onPress={() => handleLocationSelect(item)}
-                >
-                  <Text style={styles.locationItemText}>{item.name}</Text>
-                  {location === item.name && (
-                    <Ionicons name="checkmark" size={20} color="#2196F3" />
-                  )}
-                </TouchableOpacity>
-              )}
-            />
-          </View>
-        </View>
-      </Modal>
     </SafeAreaView>
   );
 }
