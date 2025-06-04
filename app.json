@@ -14,7 +14,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/your-next-home-logo.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.ynh.propertymaintenance",
@@ -31,7 +31,7 @@
         "expo-splash-screen",
         {
           "backgroundColor": "#ffffff",
-          "image": "./assets/splash-icon.png"
+          "image": "./assets/your-next-home-logo.png"
         }
       ],
       "expo-font",
