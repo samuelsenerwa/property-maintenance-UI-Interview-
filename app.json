@@ -4,7 +4,7 @@
     "slug": "property-maintenance",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/your-next-home-logo.png",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "scheme": "propertymaintenance",
@@ -52,12 +52,11 @@
         {
           "photosPermission": "The app accesses your photos to let you share the plumber"
         }
-      ],
-      "expo-build-properties"
+      ]
     ],
     "extra": {
       "eas": {
-        "projectId": "90d0e98d-3cde-4130-a569-a830d991c5da"
+        "projectId": "f80ccb57-f8d2-4de6-9c1c-c09c217cc627"
       }
     }
   }
