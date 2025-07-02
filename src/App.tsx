@@ -5,6 +5,9 @@ import * as React from 'react';
 import { Navigation } from './navigation';
 import { useFonts } from 'expo-font';
 import { fontConfig } from './utils/fonts';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store';
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -29,17 +32,21 @@ export function App() {
   }
 
   return (
-    <Navigation
-      linking={{
-        enabled: 'auto',
-        prefixes: [
-          // Match the scheme defined in app.json
-          'propertymaintenance://',
-        ],
-      }}
-      onReady={() => {
-        // SplashScreen is now hidden in the useEffect above
-      }}
-    />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Navigation
+          linking={{
+            enabled: 'auto',
+            prefixes: [
+              // Match the scheme defined in app.json
+              'propertymaintenance://',
+            ],
+          }}
+          onReady={() => {
+            // SplashScreen is now hidden in the useEffect above
+          }}
+        />
+      </PersistGate>
+    </Provider>
   );
 }
