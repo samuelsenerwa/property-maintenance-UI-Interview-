@@ -54,8 +54,8 @@ export const typography = {
   },
 };
 
-// Colors
-export const colors = {
+// Light mode colors
+export const lightColors = {
   primary: '#2196F3',
   secondary: '#FF9800',
   background: '#F5F7FA',
@@ -67,7 +67,27 @@ export const colors = {
   warning: '#FF9800',
   error: '#F44336',
   info: '#2196F3',
+  iconBackground: '#F5F5F5',
 };
+
+// Dark mode colors
+export const darkColors = {
+  primary: '#2196F3',
+  secondary: '#FF9800',
+  background: '#121212',
+  card: '#1E1E1E',
+  text: '#FFFFFF',
+  textSecondary: '#AAAAAA',
+  border: '#333333',
+  success: '#4CAF50',
+  warning: '#FF9800',
+  error: '#F44336',
+  info: '#2196F3',
+  iconBackground: '#333333',
+};
+
+// For backward compatibility
+export const colors = lightColors;
 
 // Spacing
 export const spacing = {
@@ -91,8 +111,16 @@ export const borderRadius = {
 
 // Theme object
 export const theme = {
-  typography,
-  colors,
-  spacing,
-  borderRadius,
+  light: {
+    typography,
+    colors: lightColors,
+    spacing,
+    borderRadius,
+  },
+  dark: {
+    typography,
+    colors: darkColors,
+    spacing,
+    borderRadius,
+  },
 };
