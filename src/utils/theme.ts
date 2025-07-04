@@ -56,9 +56,11 @@ export const typography = {
 
 // Light mode colors
 export const lightColors = {
+  whiteText: '#FFFFFF',
   primary: '#2196F3',
   secondary: '#FF9800',
   background: '#F5F7FA',
+  backgroundSecondary: '#A07856',
   card: '#FFFFFF',
   text: '#333333',
   textSecondary: '#666666',
@@ -72,9 +74,11 @@ export const lightColors = {
 
 // Dark mode colors
 export const darkColors = {
+  whiteText: '#FFFFFF',
   primary: '#2196F3',
   secondary: '#FF9800',
   background: '#121212',
+  backgroundSecondary: '#A07856',
   card: '#1E1E1E',
   text: '#FFFFFF',
   textSecondary: '#AAAAAA',
