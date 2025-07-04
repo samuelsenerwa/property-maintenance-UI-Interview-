@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text } from '@react-navigation/elements';
-import { View, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { View, TouchableOpacity, ScrollView, Image, Text } from 'react-native';
 import { SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles/HomeStyles';
@@ -96,7 +95,7 @@ export function Home() {
                 <Image source={Wifi} style={{ width: 24, height: 24 }} />
               </View>
             </View>
-            <View style={styles.billDetails}>````
+            <View style={styles.billDetails}>
               <Text style={[styles.billTitle, { color: themeColors.textSecondary }]}>Internet</Text>
               <Text style={styles.billDueText}>Due in 30 days</Text>
             </View>
