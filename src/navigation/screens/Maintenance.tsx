@@ -20,6 +20,9 @@ import * as ImagePicker from 'expo-image-picker';
 import {Picker} from '@react-native-picker/picker';
 import { borderRadius, colors, spacing, typography } from '../../utils/theme';
 import { fonts } from '../../utils/fonts';
+import { useSelector } from 'react-redux';
+import { selectDarkMode } from '../../store/slices/themeSlice';
+import { darkColors, lightColors } from '../../utils/theme';
 
 // Define the photo type
 interface Photo {
@@ -48,6 +51,8 @@ export function Maintenance() {
   const [selectedLocation, setSelectedLocation] = useState('');
   const [selectedPhotos, setSelectedPhotos] = useState<Photo[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const isDarkMode = useSelector(selectDarkMode);
+  const themeColors = isDarkMode ? darkColors : lightColors;
 
   // Dummy data for locations
   const locations: Location[] = [
@@ -260,22 +265,23 @@ export function Maintenance() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+    <SafeAreaView style={[styles.container, { backgroundColor: themeColors.background }]}>
+      <ScrollView style={[styles.scrollView, { backgroundColor: themeColors.background }]}>
         {/* New Request Section */}
-        <View style={styles.card}>
-          <Text style={styles.sectionTitle}>New Request</Text>
-          <Text style={styles.inputLabel}>Describe the issue</Text>
+        <View style={[styles.card, { backgroundColor: themeColors.card }]}>
+          <Text style={[styles.sectionTitle, { color: themeColors.text } ]}>New Request</Text>
+          <Text style={[styles.inputLabel, { color: themeColors.text } ]}>Describe the issue</Text>
           <TextInput
             style={styles.input}
             placeholder="e.g., Kitchen sink clogged"
             value={issueDescription}
             onChangeText={setIssueDescription}
+            placeholderTextColor={themeColors.textSecondary}
           />
 
-          <Text style={styles.inputLabel}>Location</Text>
+          <Text style={[styles.inputLabel, { color: themeColors.text } ]}>Location</Text>
           <TouchableOpacity style={styles.locationPicker} onPress={openPicker}>
-            <Text style={styles.locationPickerText}>{selectedLocation || 'Select Location'}</Text>
+            <Text style={[styles.locationPickerText, { color: themeColors.text } ]}>{selectedLocation || 'Select Location'}</Text>
               <Picker
               ref={pickerRef}
               selectedValue={selectedLocation}
@@ -289,7 +295,7 @@ export function Maintenance() {
                 ))}
               </Picker>
          </TouchableOpacity>
-          <Text style={styles.inputLabel}>Additional details (optional)</Text>
+          <Text style={[styles.inputLabel, { color: themeColors.text } ]}>Additional details (optional)</Text>
           <TextInput
             style={[styles.input, styles.textArea]}
             placeholder="Provide more information if needed"
@@ -297,9 +303,10 @@ export function Maintenance() {
             numberOfLines={4}
             value={additionalDetails}
             onChangeText={setAdditionalDetails}
+            placeholderTextColor={themeColors.textSecondary}
           />
 
-          <Text style={styles.inputLabel}>Upload photos (optional)</Text>
+          <Text style={[styles.inputLabel, { color: themeColors.text } ]}>Upload photos (optional)</Text>
           <TouchableOpacity
             style={styles.uploadButton}
             onPress={handleAddPhoto}
@@ -326,17 +333,17 @@ export function Maintenance() {
         </View>
 
         {/* Existing Requests Section */}
-        <View style={styles.card}>
-          <Text style={styles.sectionTitle}>Existing Requests</Text>
+        <View style={[styles.card, { backgroundColor: themeColors.card }]}>
+          <Text style={[styles.sectionTitle, { color: themeColors.text } ]}>Existing Requests</Text>
           {existingRequests.map((request) => (
             <TouchableOpacity
               key={request.id}
               style={styles.requestItem}
               onPress={() => Alert.alert('Request Details', `Request #${request.id}\nIssue: ${request.issue}\nSubmitted: ${request.date}\nStatus: ${request.status === 'inProgress' ? 'In Progress' : request.status === 'completed' ? 'Completed' : 'Submitted'}`)}
             >
-              <View style={styles.requestInfo}>
-                <Text style={styles.requestId}>Request #{request.id}</Text>
-                <Text style={styles.requestDescription}>Issue: {request.issue}</Text>
+              <View style={[styles.requestInfo, { backgroundColor: themeColors.card }]}>
+                <Text style={[styles.requestId, { color: themeColors.text } ]}>Request #{request.id}</Text>
+                <Text style={[styles.requestDescription, { color: themeColors.textSecondary } ]}>Issue: {request.issue}</Text>
               </View>
               {renderStatusBadge(request.status)}
             </TouchableOpacity>
@@ -345,18 +352,18 @@ export function Maintenance() {
 
         {/* Submit Button */}
         <TouchableOpacity
-          style={[styles.submitButton, isSubmitting && styles.submitButtonDisabled]}
+          style={[styles.submitButton, isSubmitting && styles.submitButtonDisabled, { backgroundColor: themeColors.primary }]}
           onPress={handleSubmit}
           disabled={isSubmitting}
         >
           {isSubmitting ? (
-            <Text style={styles.submitButtonText}>
+            <Text style={[styles.submitButtonText, { color: themeColors.text }]}>
               Submitting...
             </Text>
           ) : (
             <>
               <MaterialIcons name="send" size={24} color="white" />
-              <Text style={styles.submitButtonText}>
+              <Text style={[styles.submitButtonText, { color: themeColors.whiteText }]}>
                 Submit Request
               </Text>
             </>
