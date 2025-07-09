@@ -190,7 +190,7 @@ export const styles = StyleSheet.create({
   raiseRequestText: {
     ...typography.button,
     fontFamily: fonts.medium,
-    color: colors.text,
+    color: colors.whiteText,
     fontSize: 14,
   },
 });
