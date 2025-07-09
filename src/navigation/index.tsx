@@ -25,8 +25,8 @@ export function Navigation(props: any) {
   const isDarkMode = useSelector(selectDarkMode);
   const colors = isDarkMode ? darkColors : lightColors;
 
-  // Create tab navigator with theme-aware options
-  const TabNavigator = createBottomTabNavigator({
+  // Create tab navigator with theme-aware options - memoized to prevent recreation on theme change
+  const TabNavigator = React.useMemo(() => createBottomTabNavigator({
     screens: {
       Home: {
         screen: Home,
@@ -172,10 +172,10 @@ export function Navigation(props: any) {
       tabBarActiveTintColor: colors.primary,
       tabBarInactiveTintColor: colors.textSecondary,
     },
-  });
+  }), [colors]);
 
-  // Create stack navigator with theme-aware options
-  const Stack = createNativeStackNavigator({
+  // Create stack navigator with theme-aware options - memoized to prevent recreation on theme change
+  const Stack = React.useMemo(() => createNativeStackNavigator({
     screens: {
       HomeTabs: {
         screen: TabNavigator,
@@ -250,10 +250,10 @@ export function Navigation(props: any) {
         backgroundColor: colors.background,
       },
     },
-  });
+  }), [TabNavigator, colors]);
 
-  // Create and return the static navigation with the stack
-  const StaticNavigation = createStaticNavigation(Stack);
+  // Create and return the static navigation with the stack - memoized to prevent recreation
+  const StaticNavigation = React.useMemo(() => createStaticNavigation(Stack), [Stack]);
   return <StaticNavigation {...props} />;
 }
 
