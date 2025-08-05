@@ -40,7 +40,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -73,7 +73,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -106,7 +106,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -139,7 +139,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -256,7 +256,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }: { color: string }) => (
