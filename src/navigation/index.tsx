@@ -19,6 +19,8 @@ import { Maintenance } from './screens/Maintenance';
 import { Payment } from './screens/Payment';
 import { useSelector } from 'react-redux';
 import { selectDarkMode } from '../store/slices/themeSlice';
+import { Login } from './screens/Login';
+import { SignUp } from './screens/SignUp';
 
 // Custom navigation component that uses the theme
 export function Navigation(props: any) {
@@ -39,7 +41,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -72,7 +74,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -105,7 +107,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -138,7 +140,7 @@ export function Navigation(props: any) {
             <TouchableOpacity style={{
               padding: 10,
             }}>
-              <Ionicons name="menu" size={24} color={colors.text} />
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
             </TouchableOpacity>
           ),
           tabBarIcon: ({ color }) => (
@@ -243,6 +245,72 @@ export function Navigation(props: any) {
             backgroundColor: colors.card,
           },
         }),
+      },
+      Login: {
+        screen: Login,
+        options: {
+          headerTitle: () => (
+            <Text style={{...typography.h3, color: colors.text}}>Login</Text>
+          ),
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity style={{
+              padding: 10,
+            }}>
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
+            </TouchableOpacity>
+          ),
+          tabBarIcon: ({ color }: { color: string }) => (
+            <Ionicons name="log-in" size={24} color={color} />
+          ),
+          tabBarLabel: ({ color }: { color: string }) => (
+            <Text style={{
+              ...typography.caption,
+              fontFamily: 'Outfit',
+              color: color,
+              fontSize: 12,
+              marginTop: 0,
+            }}>
+              Login
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: colors.card,
+          },
+        },
+      },
+      SignUp: {
+        screen: SignUp,
+        options: {
+          headerTitle: () => (
+            <Text style={{...typography.h3, color: colors.text}}>Sign Up</Text>
+          ),
+          headerTitleAlign: "center",
+          headerLeft: () => (
+            <TouchableOpacity style={{
+              padding: 10,
+            }}>
+              {/* <Ionicons name="menu" size={24} color={colors.text} /> */}
+            </TouchableOpacity>
+          ),
+          tabBarIcon: ({ color }: { color: string }) => (
+            <Ionicons name="person-add" size={24} color={color} />
+          ),
+          tabBarLabel: ({ color }: { color: string }) => (
+            <Text style={{
+              ...typography.caption,
+              fontFamily: 'Outfit',
+              color: color,
+              fontSize: 12,
+              marginTop: 0,
+            }}>
+              Sign Up
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: colors.card,
+          },
+        },
       },
     },
     screenOptions: {

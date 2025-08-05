@@ -76,6 +76,16 @@ export function Profile() {
               </Text>
             </View>
           </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.menuItem}>
+            <View style={styles.menuIconContainer}>
+              <Ionicons name="log-out" size={20} color={themeColors.textSecondary} />
+            </View>
+            <View style={[styles.menuContent, { backgroundColor: themeColors.card }]}>
+              <Text style={[styles.menuLabel, { color: themeColors.textSecondary }]}>
+                Logout
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
         {/* Preferences Section */}
