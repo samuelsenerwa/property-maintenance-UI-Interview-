@@ -57,7 +57,7 @@ export function Login() {
   };
 
   const handleSignUp = () => {
-    Alert.alert('Sign Up', 'Sign up functionality coming soon!');
+    navigation.navigate('SignUp');
   };
 
   const dynamicStyles = styles(colors);
