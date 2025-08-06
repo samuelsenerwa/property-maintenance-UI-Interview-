@@ -1,7 +1,8 @@
-import { Assets as NavigationAssets } from '@react-navigation/elements';
-import { Asset } from 'expo-asset';
 import * as SplashScreen from 'expo-splash-screen';
 import * as React from 'react';
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+import { Assets as NavigationAssets } from '@react-navigation/elements';
+import { Asset } from 'expo-asset';
 import { Navigation } from './navigation';
 import { useFonts } from 'expo-font';
 import { fontConfig } from './utils/fonts';
@@ -17,6 +18,10 @@ Asset.loadAsync([
 ]);
 
 SplashScreen.preventAutoHideAsync();
+
+const convex = new ConvexReactClient(process.env.EXPO_PUBLIC_CONVEX_URL!, {
+  unsavedChangesWarning: false,
+});
 
 export function App() {
   const [fontsLoaded] = useFonts(fontConfig);
@@ -34,6 +39,7 @@ export function App() {
 
   return (
     <Provider store={store}>
+      <ConvexProvider client={convex}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider>
           <Navigation
@@ -50,6 +56,7 @@ export function App() {
           />
         </ThemeProvider>
       </PersistGate>
+    </ConvexProvider>
     </Provider>
   );
 }
